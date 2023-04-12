@@ -9,7 +9,11 @@ const Banner = () => {
   return (
     <div className="hero " style={bgImag}>
       <div className="hero-content flex-col lg:flex-row-reverse">
-        <img src={bannerImg} className=" rounded-lg w-1/2 shadow-2xl" alt="" />
+        <img
+          src={bannerImg}
+          className=" rounded-lg lg:w-1/2 shadow-2xl"
+          alt=""
+        />
         <div>
           <h1 className="text-5xl font-bold">Box Office News!</h1>
           <p className="py-6">
