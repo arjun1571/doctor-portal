@@ -1,15 +1,12 @@
 import React from "react";
 import treatment from "../../../assets/images/treatment.png";
+import Button from "../../../component/Button/Button";
 
 const Tream = () => {
   return (
-    <div className="hero lg:px-40 mt-20">
+    <div className="hero lg:px-40 mt-20 lg:mt-36">
       <div className="hero-content flex-col lg:flex-row">
-        <img
-          src={treatment}
-          className="lg:max-w-sm rounded-lg shadow-2xl"
-          alt=""
-        />
+        <img src={treatment} className="lg:max-w-sm " alt="" />
         <div>
           <h1 className="text-5xl font-bold">
             Exceptional Dental Care, on Your Terms!
@@ -22,7 +19,7 @@ const Tream = () => {
             here', making it look like readable English. Many desktop publishing
             packages and web page.
           </p>
-          <button className="btn btn-primary">Get Started</button>
+          <Button>Get Started</Button>
         </div>
       </div>
     </div>
