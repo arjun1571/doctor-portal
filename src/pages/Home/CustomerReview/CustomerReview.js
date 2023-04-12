@@ -40,7 +40,7 @@ const CustomerReview = () => {
           <h1 className="text-4xl">What Our Patients Says</h1>
         </div>
         <div>
-          <img src={logo} alt="" />
+          <img className="w-24 lg:w-48" src={logo} alt="" />
         </div>
       </div>
       <div className="grid lg:grid-cols-3 gap-5 md:grid-cols-2 mt-3">

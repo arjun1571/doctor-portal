@@ -5,6 +5,7 @@ import Services from "../Services/Services";
 import Tream from "../Tream/Tream";
 import MakeApionment from "../MakeApionment/MakeApionment";
 import CustomerReview from "../CustomerReview/CustomerReview";
+import ContactUs from "../ContactUs/ContactUs";
 
 const Home = () => {
   return (
@@ -15,6 +16,7 @@ const Home = () => {
       <Tream></Tream>
       <MakeApionment></MakeApionment>
       <CustomerReview></CustomerReview>
+      <ContactUs></ContactUs>
     </div>
   );
 };
