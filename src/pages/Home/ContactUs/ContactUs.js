@@ -1,9 +1,10 @@
 import React from "react";
-import bg from "../../../assets/images/appointment.png";
+// import bg from "../../../assets/images/appointment.png";
+import bag from "../../../assets/images/footer.png";
 
 const ContactUs = () => {
   return (
-    <div className="hero mt-20" style={{ background: `url(${bg})` }}>
+    <div className="hero mt-20" style={{ background: `url(${bag})` }}>
       <div className="hero-content ">
         <div className="card  ">
           <div className="card-body">

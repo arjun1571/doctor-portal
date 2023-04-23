@@ -1,16 +1,14 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import bag from "../../assets/images/footer.png";
+import bg from "../../assets/images/appointment.png";
 
 const Fotter = () => {
   return (
-    <footer className=" p-10 mt-10 ">
-      <div
-        className="footer "
-        style={{
-          background: `url(${bag})`,
-        }}
-      >
+    <footer
+      className=" p-10 mt-10 text-white"
+      style={{ background: `url(${bg})` }}
+    >
+      <div className="footer">
         <div>
           <span className="footer-title">Services</span>
           <Link to="/" className="link link-hover">
