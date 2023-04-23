@@ -1,6 +1,6 @@
 import React from "react";
 
-const ApionmentCart = ({ op }) => {
+const ApionmentCart = ({ op, setTreatment }) => {
   const { name, slots } = op;
   return (
     <div>
@@ -12,9 +12,13 @@ const ApionmentCart = ({ op }) => {
             {slots.length} {slots.length > 1 ? "spaces" : "space"} availabel
           </p>
           <div className="card-actions justify-center">
-            <button className="btn btn-primary text-white">
+            <label
+              htmlFor="my-modal-3"
+              onClick={() => setTreatment(op)}
+              className="btn btn-primary text-white"
+            >
               Book Appointment
-            </button>
+            </label>
           </div>
         </div>
       </div>
