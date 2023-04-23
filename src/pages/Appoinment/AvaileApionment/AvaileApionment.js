@@ -25,7 +25,7 @@ const AvaileApionment = ({ selectedDate }) => {
           ></ApionmentCart>
         ))}
       </div>
-      <BookModal teatment={teatment}></BookModal>
+      <BookModal teatment={teatment} selectedDate={selectedDate}></BookModal>
     </div>
   );
 };
