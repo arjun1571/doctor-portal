@@ -13,6 +13,7 @@ const ApionmentCart = ({ op, setTreatment }) => {
           </p>
           <div className="card-actions justify-center">
             <label
+              disabled={slots?.length === 0}
               htmlFor="my-modal-3"
               onClick={() => setTreatment(op)}
               className="btn btn-primary text-white"
