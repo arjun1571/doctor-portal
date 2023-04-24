@@ -1,7 +1,11 @@
+import { useContext, useState } from "react";
 import { useForm } from "react-hook-form";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../../context/AuthProvider";
 
 const LogIn = () => {
+  const { LoginUser } = useContext(AuthContext);
+  const [loginError, setLogInError] = useState("");
   const {
     register,
     formState: { errors },
@@ -9,7 +13,17 @@ const LogIn = () => {
   } = useForm();
 
   const handleLogIn = (data) => {
+    setLogInError("");
     console.log(data);
+    LoginUser(data.email, data.password)
+      .then((result) => {
+        const user = result.user;
+        console.log(user);
+      })
+      .catch((error) => {
+        console.error(error);
+        setLogInError(error.message);
+      });
   };
   return (
     <div className="h-[750px] flex justify-center items-center">
@@ -51,6 +65,7 @@ const LogIn = () => {
                 {errors.password?.message}
               </p>
             )}
+            {loginError && <p className="text-red-600">{loginError}</p>}
             <span className="label-text underline mt-2">Foggot Password ?</span>
           </div>
           <input

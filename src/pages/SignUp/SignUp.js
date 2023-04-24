@@ -1,14 +1,34 @@
-import React from "react";
+import React, { useContext, useState } from "react";
 import { useForm } from "react-hook-form";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../../context/AuthProvider";
+import { toast } from "react-hot-toast";
 
 const SignUp = () => {
+  const { createSignInuser, upProfile } = useContext(AuthContext);
+  const [signUpError, setSingupError] = useState("");
+
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm();
   const handleSingUp = (data) => {
+    setSingupError("");
+    createSignInuser(data.email, data.password)
+      .then((result) => {
+        const user = result.user;
+        console.log(user);
+        toast("user created successfully");
+        const userInfo = {
+          displayName: data.name,
+        };
+        upProfile(userInfo);
+      })
+      .catch((error) => {
+        console.error(error);
+        setSingupError(error.message);
+      });
     console.log(data);
     console.log(errors);
   };
@@ -65,12 +85,14 @@ const SignUp = () => {
               <p className="text-red-600">{errors.password.message}</p>
             )}
           </div>
+
           <input
             className="btn btn-black text-white w-full mt-4"
             type="submit"
             value="LogIn"
           />
         </form>
+        {signUpError && <p className="text-red-600">{signUpError}</p>}
         <p className="mt-1">
           Already have an account?
           <Link className="text-secondary" to="/login">
