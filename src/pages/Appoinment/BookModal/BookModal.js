@@ -38,6 +38,9 @@ const BookModal = ({ teatment, selectedDate,setTreatment,refetch }) => {
         toast.success("booking confraim")
         refetch()
       }
+      else{
+        toast.error(data.messeage)
+      }
     })
     console.log(booking);
   };
