@@ -20,7 +20,7 @@ const AuthProvider = ({ children }) => {
   };
 
   const upProfile = (userInfo) => {
-    return updateProfile(user, userInfo);
+    return updateProfile(auth.currentUser, userInfo);
   };
   const createSignInuser = (email, password) => {
     setLoading(true);

@@ -3,22 +3,27 @@ import React, { useState } from "react";
 import ApionmentCart from "../ApionmentCart/ApionmentCart";
 import BookModal from "../BookModal/BookModal";
 import { useQuery } from "@tanstack/react-query";
+import Loading from "../../../SheardPage/Loading/Loading";
 
 const AvaileApionment = ({ selectedDate }) => {
   const [teatment, setTreatment] = useState({});
+  const date = format(selectedDate,"PP")
 
-  const { data: appoinmentOptions = [] } = useQuery({
-    queryKey: ["appoinmentOptions"],
-    queryFn: () =>
-      fetch("http://localhost:5000/appoinmentOptions").then((res) =>
-        res.json()
-      ),
+  const { data: appoinmentOptions = [],refetch,isLoading } = useQuery({
+    queryKey: ["appoinmentOptions",date],
+  queryFn:async () =>{
+    const res = await fetch(`http://localhost:5000/appoinmentOptions?date=${date}`)
+    const data =await res.json();
+    return data}
   });
   // useEffect(() => {
   //   fetch("http://localhost:5000/appoinmentOptions")
   //     .then((res) => res.json())
   //     .then((data) => setOption(data));
   // });
+  if(isLoading){
+    return <Loading></Loading>
+  }
   return (
     <div className="mt-6">
       <p className="text-center font-bold text-primary">
@@ -33,7 +38,7 @@ const AvaileApionment = ({ selectedDate }) => {
           ></ApionmentCart>
         ))}
       </div>
-      <BookModal teatment={teatment} selectedDate={selectedDate}></BookModal>
+      <BookModal refetch={refetch} teatment={teatment} setTreatment={setTreatment} selectedDate={selectedDate}></BookModal>
     </div>
   );
 };
