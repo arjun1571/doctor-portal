@@ -6,6 +6,7 @@ import Appoinment from "../../pages/Appoinment/Appoinment/Appoinment";
 import SignUp from "../../pages/SignUp/SignUp";
 import DashBord from "../../DashBord/Dashbord/DashBord";
 import PrivateRoute from "../PrivateRoute/PrivateRoute";
+import DashBordLayout from "../../LayOut/DashBord/DashBordLayout";
 
 const router = createBrowserRouter([
   {
@@ -32,11 +33,14 @@ const router = createBrowserRouter([
   },
   {
     path: "/dashbord",
-    element: (
-      <PrivateRoute>
-        <DashBord></DashBord>
-      </PrivateRoute>
-    ),
+    element: <PrivateRoute><DashBordLayout></DashBordLayout></PrivateRoute>,
+    children:[
+        {
+          path:'/dashbord',
+          element:<DashBord></DashBord>
+        }
+      ]
+    
   },
 ]);
 export default router;
