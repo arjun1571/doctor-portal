@@ -27,7 +27,7 @@ const SignUp = () => {
         };
         upProfile(userInfo)
         .then(()=>{
-            navigate("/")
+          saveUser(data.name,data.email)
         })
         .catch((error)=>{console.error(error)})
       })
@@ -35,9 +35,39 @@ const SignUp = () => {
         console.error(error);
         setSingupError(error.message);
       });
-    console.log(data);
+    console.log("save user ",data);
     console.log(errors);
   };
+
+  const saveUser =(name,email)=>{
+    const user = {name,email}
+    fetch(`http://localhost:5000/user`,{
+      method:"POST",
+      headers:{
+        "content-type":"application/json"
+      },
+      body: JSON.stringify(user)
+    })
+    .then(res=>res.json())
+    .then(data => {
+      console.log(data);
+      getUserToken(email)
+      
+    })
+  }
+
+  const getUserToken = (email)=>{
+    fetch(`http://localhost:5000/jwt?email=${email}`)
+    .then(res=>res.json())
+    .then(data=>{
+      if(data.accessToken){
+        localStorage.setItem('accessToken',data.accessToken)
+        navigate('/')
+      }
+    })
+
+
+  }
   return (
     <div className="h-[750px] flex justify-center items-center">
       <div className="w-96">
