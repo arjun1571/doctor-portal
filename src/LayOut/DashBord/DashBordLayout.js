@@ -1,6 +1,6 @@
 import React from 'react';
 import NavBar from '../../SheardPage/NavBar/NavBar';
-import { Outlet } from 'react-router-dom';
+import { Link, Outlet } from 'react-router-dom';
 
 const DashBordLayout = () => {
     return (
@@ -15,8 +15,9 @@ const DashBordLayout = () => {
                     <label htmlFor="dashbord-drawer" className="drawer-overlay"></label> 
                     <ul className="menu p-4 w-80 bg-base-100 text-base-content">
 
-                    <li>side bar 1</li>
-                    <li>side bar 1</li>
+                    <li><Link to="/dashbord">My Appoinment</Link></li>
+                    <li><Link to="/dashbord/user">All Users</Link></li>
+                    
                 
                     </ul>
                 

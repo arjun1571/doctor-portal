@@ -3,6 +3,7 @@ import { useForm } from "react-hook-form";
 import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../context/AuthProvider";
 import { toast } from "react-hot-toast";
+import useToken from "../../hooks/useToken";
 
 const SignUp = () => {
   const { createSignInuser, upProfile } = useContext(AuthContext);
@@ -13,8 +14,13 @@ const SignUp = () => {
     handleSubmit,
     formState: { errors },
   } = useForm();
-
+  const [createUserEmail,setCreateUserEmail]=useState("")
+  const [token]=useToken(createUserEmail)
   const navigate= useNavigate()
+  if(token){
+    navigate('/')
+  }
+
   const handleSingUp = (data) => {
     setSingupError("");
     createSignInuser(data.email, data.password)
@@ -50,24 +56,11 @@ const SignUp = () => {
     })
     .then(res=>res.json())
     .then(data => {
-      console.log(data);
-      getUserToken(email)
-      
+      setCreateUserEmail(email)
     })
   }
 
-  const getUserToken = (email)=>{
-    fetch(`http://localhost:5000/jwt?email=${email}`)
-    .then(res=>res.json())
-    .then(data=>{
-      if(data.accessToken){
-        localStorage.setItem('accessToken',data.accessToken)
-        navigate('/')
-      }
-    })
 
-
-  }
   return (
     <div className="h-[750px] flex justify-center items-center">
       <div className="w-96">

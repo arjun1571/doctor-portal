@@ -35,11 +35,11 @@ const MyAppoinment = () => {
                 </thead>
                 <tbody>
                 {
-                    bookings.map((book,i)=>
+                    bookings?.map((book,i)=>
                     <tr key={book._id}>
                         <th>{i+1}</th>
-                        <td>{book.patient}</td>
-                        <td>{book.treatment}</td>
+                        <td>{book?.patient}</td>
+                        <td>{book?.treatment}</td>
                         <td>{book.appoinmentDate}</td>
                         <td>{book.slot}</td>
                     </tr>
